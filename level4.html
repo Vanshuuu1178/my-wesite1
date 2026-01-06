@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escrow Payment | Awaiting Funds</title>
+    <link rel="stylesheet" href="level4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+    <div class="vignette"></div>
+
+    <div class="payment-container">
+
+        <div class="status-bar">
+            <span class="blink-red">● AWAITING FUNDS</span>
+            <span>ORD-ID: #994-Alpha-X</span>
+        </div>
+
+        <div class="content-wrapper">
+
+            <div class="bill-section">
+                <h2>ORDER SUMMARY</h2>
+                <div class="line-item">
+                    <span>1x Tsar Bomba (50MT)</span>
+                    <span class="price">₿ 400,000.00</span>
+                </div>
+                <div class="line-item">
+                    <span>Shipping (Submarine)</span>
+                    <span class="price">₿ 5,000.00</span>
+                </div>
+                <div class="line-item fee">
+                    <span>XMR Anonymity Fee</span>
+                    <span class="price">₿ 500.00</span>
+                </div>
+                <hr>
+                <div class="total-row">
+                    <span>TOTAL ESCROW</span>
+                    <span class="total-price">₿ 405,500.00</span>
+                </div>
+
+                <div class="warning-box">
+                    ⚠️ WARNING: You have 15 minutes to transfer funds. Transactions are non-refundable.
+                </div>
+            </div>
+
+            <div class="wallet-section">
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh&bgcolor=111&color=00ff00"
+                        alt="Wallet QR">
+                    <div class="scanner-line"></div>
+                </div>
+
+                <div class="wallet-address-box">
+                    <label>SEND BITCOIN (BTC) TO:</label>
+                    <div class="hash">bc1qxy2kgdygjrsqtzq2n0...</div>
+                    <button class="copy-btn">COPY ADDRESS</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="terminal-log">
+            <div class="log-entry">> Monitoring Blockchain...</div>
+            <div class="log-entry">> 0/3 Confirmations...</div>
+            <div class="log-entry">> Waiting for block #842051...</div>
+            <div class="log-entry loading">> LISTENING <span class="dots">...</span></div>
+
+        </div>
+
+    </div>
+    <a href="level5.html" style="text-decoration:none;">
+        <button class="copy-btn" style="margin-top:10px;">PAYMENT CONFIRMED TRACK ORDER</button>
+    </a>
+</body>
+
+</html>

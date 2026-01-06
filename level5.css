@@ -1,0 +1,338 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #000;
+    color: #00ff00;
+    font-family: 'VT323', monospace;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 255, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.main-console {
+    width: 900px;
+    height: 600px;
+    border: 2px solid #00ff00;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2), inset 0 0 30px rgba(0, 255, 0, 0.1);
+    background: #020b02;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.status-light {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff00;
+    margin-right: 10px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.content-grid {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+}
+
+.map-section {
+    flex: 2;
+    border: 1px solid #004400;
+    position: relative;
+    background: #001100;
+    overflow: hidden;
+}
+
+.world-map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.grid-lines {
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(#003300 1px, transparent 1px),
+        linear-gradient(90deg, #003300 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
+
+.continent {
+    position: absolute;
+    border: 1px solid #006600;
+    background: rgba(0, 50, 0, 0.5);
+}
+
+.na {
+    top: 20%;
+    left: 10%;
+    width: 150px;
+    height: 100px;
+}
+
+.eu {
+    top: 25%;
+    left: 45%;
+    width: 80px;
+    height: 60px;
+}
+
+.as {
+    top: 30%;
+    left: 65%;
+    width: 180px;
+    height: 120px;
+}
+
+.radar-scan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(0, 255, 0, 0.2) 60deg, transparent 61deg);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 4s linear infinite;
+    z-index: 2;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.target-package {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    animation: moveShip 20s linear infinite alternate;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+}
+
+.pulse-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #00ff00;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.tag {
+    font-size: 0.8rem;
+    background: #000;
+    padding: 2px 4px;
+    margin-top: 5px;
+    border: 1px solid #00ff00;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes moveShip {
+    0% {
+        left: 10%;
+        top: 40%;
+    }
+
+    50% {
+        left: 50%;
+        top: 60%;
+    }
+
+    100% {
+        left: 80%;
+        top: 30%;
+    }
+}
+
+.map-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #002200;
+    border-top: 1px solid #00ff00;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1rem;
+    z-index: 6;
+}
+
+.log-section {
+    flex: 1;
+    border-left: 2px solid #00ff00;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    border-bottom: 1px solid #00ff00;
+    margin-top: 0;
+}
+
+.terminal-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+    margin-bottom: auto;
+}
+
+.terminal-list li {
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #00ff00;
+}
+
+.warning {
+    color: #aaff00;
+}
+
+.typing {
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.receipt-box {
+    border: 1px dashed #00ff00;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(0, 50, 0, 0.3);
+}
+
+.receipt-box h4 {
+    margin: 0 0 10px 0;
+    text-align: center;
+    background: #00ff00;
+    color: black;
+}
+
+.receipt-box p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.total {
+    font-weight: bold;
+    border-top: 1px solid #00ff00;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.print-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.print-btn:hover {
+    background: #00ff00;
+    color: black;
+}
+
+.home-btn {
+    display: block;
+    text-align: center;
+    background: #00ff00;
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.home-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 15px #fff;
+}
+
+body {
+    /* Existing code... */
+
+    /* ADD THIS LINE: */
+    cursor: crosshair;
+}
+
+/* Make clickable things look like a target */
+a:hover,
+button:hover {
+    cursor: help;
+    /* Usually looks like a ? or a hand */
+}

@@ -1,0 +1,207 @@
+ /* RESET */
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     background-color: #000;
+     color: #00ff00;
+     /* Hacker Green */
+     font-family: 'VT323', monospace;
+     height: 100vh;
+     margin: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+ }
+
+ /* TV STATIC NOISE EFFECT */
+ .noise-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+     opacity: 0.15;
+     pointer-events: none;
+     z-index: 10;
+ }
+
+ .terminal-window {
+     width: 700px;
+     height: 500px;
+     padding: 20px;
+     position: relative;
+ }
+
+ .header-bar {
+     border-bottom: 2px solid #00ff00;
+     padding-bottom: 5px;
+     margin-bottom: 20px;
+     font-size: 1.2rem;
+     opacity: 0.8;
+ }
+
+ /* CONSOLE LINES */
+ .console-output {
+     font-size: 1.4rem;
+     line-height: 1.8rem;
+ }
+
+ .line {
+     margin: 0;
+     opacity: 0;
+     /* Hidden initially */
+     animation: type-in 0.1s forwards;
+     /* Snap into view */
+ }
+
+ .ok {
+     color: #00ff00;
+     font-weight: bold;
+ }
+
+ .fail {
+     color: #ff0000;
+     font-weight: bold;
+     text-shadow: 0 0 5px red;
+     margin-top: 20px;
+ }
+
+ /* ANIMATION SEQUENCE (Delays) */
+ .line-1 {
+     animation-delay: 0.5s;
+ }
+
+ .line-2 {
+     animation-delay: 1.5s;
+ }
+
+ .line-3 {
+     animation-delay: 2.2s;
+ }
+
+ .line-4 {
+     animation-delay: 3.0s;
+ }
+
+ .line-5 {
+     animation-delay: 3.5s;
+ }
+
+ .line-6 {
+     animation-delay: 4.0s;
+ }
+
+ .line-7 {
+     animation-delay: 5.0s;
+ }
+
+ .line-8 {
+     animation-delay: 6.0s;
+ }
+
+ .line-9 {
+     animation-delay: 7.0s;
+ }
+
+ @keyframes type-in {
+     from {
+         opacity: 0;
+         transform: translateX(-10px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ /* FINAL MESSAGE & BUTTON */
+ .final-message {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     opacity: 0;
+     animation: fade-in-final 1s forwards;
+     animation-delay: 8s;
+     /* Appears after everything else is done */
+     background: #000;
+     padding: 20px;
+     border: 1px solid #333;
+     z-index: 20;
+ }
+
+ .final-message h1 {
+     font-size: 4rem;
+     margin: 0 0 20px 0;
+     color: #444;
+     /* Dimmed grey like a dead TV */
+     letter-spacing: 5px;
+ }
+
+ .exit-btn {
+     background: #444;
+     color: #fff;
+     padding: 15px 30px;
+     text-decoration: none;
+     font-family: sans-serif;
+     font-weight: bold;
+     font-size: 1rem;
+     border: 1px solid #666;
+     transition: 0.3s;
+ }
+
+ .exit-btn:hover {
+     background: #fff;
+     color: #000;
+ }
+
+ @keyframes fade-in-final {
+     to {
+         opacity: 1;
+     }
+ }
+
+ /* BODY FADE OUT EFFECT */
+ body {
+     animation: power-off 0.2s forwards;
+     animation-delay: 7.8s;
+     /* Screen goes dark right before the button appears */
+ }
+
+ @keyframes power-off {
+     to {
+         background-color: #000;
+     }
+ }
+
+ /* Hide the terminal text when the "No Signal" box appears */
+ .console-output {
+     animation: hide-text 0.1s forwards;
+     animation-delay: 7.8s;
+ }
+
+ @keyframes hide-text {
+     to {
+         opacity: 0;
+     }
+ }
+
+ body {
+     /* Existing code... */
+
+     /* ADD THIS LINE: */
+     cursor: crosshair;
+ }
+
+ /* Make clickable things look like a target */
+ a:hover,
+ button:hover {
+     cursor: help;
+     /* Usually looks like a ? or a hand */
+ }

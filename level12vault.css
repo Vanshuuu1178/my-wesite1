@@ -1,0 +1,235 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    /* Keeping it readable */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* MAIN WINDOW CONTAINER */
+.file-manager {
+    width: 900px;
+    height: 600px;
+    border: 2px solid #00ff00;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px #004400;
+    /* Retro block shadow */
+}
+
+/* TOP ADDRESS BAR */
+.address-bar {
+    padding: 10px;
+    border-bottom: 2px solid #00ff00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #002200;
+}
+
+.label {
+    font-weight: bold;
+}
+
+input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 5px;
+    font-family: inherit;
+}
+
+.storage-info {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* CONTENT AREA (Split View) */
+.content-area {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* LEFT SIDEBAR */
+.tree-view {
+    width: 250px;
+    border-right: 2px solid #00ff00;
+    padding: 20px;
+    background: #050505;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+    cursor: pointer;
+}
+
+li:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #fff;
+}
+
+.open {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.sys-uptime {
+    margin-top: auto;
+    font-size: 0.7rem;
+    color: #666;
+    border-top: 1px dashed #333;
+    padding-top: 10px;
+}
+
+/* RIGHT FILE GRID */
+.file-grid {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    /* Auto-fit grid */
+    grid-auto-rows: 180px;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+/* FILE CARD DESIGN */
+.file-card {
+    border: 1px solid #004400;
+    background: #001100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+    padding: 10px;
+}
+
+.file-card:hover {
+    background: #00ff00;
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-weight: bold;
+    word-break: break-all;
+    font-size: 0.9rem;
+}
+
+.size {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin: 5px 0;
+}
+
+.status {
+    font-size: 0.7rem;
+    border: 1px solid #00ff00;
+    padding: 2px 5px;
+    margin-top: 5px;
+}
+
+/* Hover state fix for border */
+.file-card:hover .status {
+    border-color: #000;
+}
+
+/* SPECIAL FILE TYPES */
+.secret .icon {
+    filter: drop-shadow(0 0 5px red);
+}
+
+.secret .status {
+    color: #ff5555;
+    border-color: #ff5555;
+}
+
+.file-card.secret:hover {
+    background: #550000;
+    color: #fff;
+    border-color: red;
+}
+
+.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.locked:hover {
+    background: #000;
+    color: #555;
+    transform: none;
+    box-shadow: none;
+    border-color: #333;
+}
+
+/* FOOTER */
+.status-footer {
+    padding: 10px;
+    border-top: 2px solid #00ff00;
+    background: #002200;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.back-link {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #fff;
+}
+
+.warning {
+    color: #ffff00;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+body {
+    /* Existing code... */
+
+    /* ADD THIS LINE: */
+    cursor: crosshair;
+}
+
+/* Make clickable things look like a target */
+a:hover,
+button:hover {
+    cursor: help;
+    /* Usually looks like a ? or a hand */
+}

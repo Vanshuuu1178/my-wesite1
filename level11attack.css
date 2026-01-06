@@ -1,0 +1,293 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: 'Teko', sans-serif;
+    /* Military Font */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.war-room {
+    width: 950px;
+    height: 600px;
+    border: 2px solid #333;
+    padding: 10px;
+    background: #050505;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.05);
+}
+
+/* HEADER */
+.header-panel {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.bandwidth {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.flicker {
+    animation: blink 0.1s infinite;
+}
+
+/* GRID LAYOUT */
+.console-grid {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.panel {
+    border: 1px solid #004400;
+    background: #001100;
+    padding: 15px;
+}
+
+h3 {
+    margin: 0 0 15px 0;
+    background: #00ff00;
+    color: #000;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+/* LEFT: TARGETS */
+.target-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.target-option {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    accent-color: #00ff00;
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+.threat-level {
+    margin-top: auto;
+    border: 2px solid #ff0000;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.red {
+    color: #ff0000;
+    font-weight: bold;
+    animation: pulse-red 0.5s infinite;
+}
+
+@keyframes pulse-red {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* CENTER: VISUALIZER */
+.visual-panel {
+    flex: 2;
+    position: relative;
+    background: radial-gradient(circle, #002200 0%, #000 100%);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Crosshair Animation */
+.crosshair {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    animation: rotate-lock 4s ease-in-out infinite;
+}
+
+.line {
+    position: absolute;
+    background: #00ff00;
+    opacity: 0.5;
+}
+
+.v {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.h {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.circle {
+    position: absolute;
+    border: 1px solid #00ff00;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.c1 {
+    width: 80%;
+    height: 80%;
+    border-style: dashed;
+}
+
+.c2 {
+    width: 40%;
+    height: 40%;
+}
+
+@keyframes rotate-lock {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.status-overlay {
+    position: absolute;
+    bottom: 20px;
+    background: #ff0000;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* RIGHT: CONTROLS */
+.control-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.method-box {
+    border: 1px solid #00ff00;
+    color: #666;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.active {
+    background: #00ff00;
+    color: #000;
+    font-weight: bold;
+}
+
+.power-bar-container {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #00ff00;
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.power-fill {
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(45deg, #00ff00, #00ff00 10px, #000 10px, #000 20px);
+    animation: slide-bar 1s linear infinite;
+}
+
+@keyframes slide-bar {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 40px 0;
+    }
+}
+
+.launch-btn {
+    margin-top: auto;
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 20px;
+    font-size: 2rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.launch-btn:hover {
+    background: #fff;
+    color: #ff0000;
+}
+
+/* BOTTOM LOGS */
+.terminal-footer {
+    height: 40px;
+    background: #111;
+    border-top: 1px solid #333;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 10px;
+}
+
+body {
+    /* Existing code... */
+
+    /* ADD THIS LINE: */
+    cursor: crosshair;
+}
+
+/* Make clickable things look like a target */
+a:hover,
+button:hover {
+    cursor: help;
+    /* Usually looks like a ? or a hand */
+}
